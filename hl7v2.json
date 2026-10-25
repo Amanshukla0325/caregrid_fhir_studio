@@ -1,0 +1,84 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-hl7v2-adt-a01-oru",
+  "type": "collection",
+  "total": 6,
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:8f12a3b4-5c6d-4e7f-9a0b-1c2d3e4f5001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-hl7v2-david-kim",
+        "identifier": [{ "system": "http://hospital.caregrid.org/mrn", "value": "MRN-334182" }],
+        "name": [{ "family": "Kim", "given": ["David"] }],
+        "gender": "male"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f12a3b4-5c6d-4e7f-9a0b-1c2d3e4f5002",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "pract-hl7v2-attending",
+        "identifier": [{ "system": "http://hl7.org/fhir/sid/us-npi", "value": "1144229988" }],
+        "name": [{ "family": "Chen", "given": ["Stephanie"], "prefix": ["Dr."] }]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f12a3b4-5c6d-4e7f-9a0b-1c2d3e4f5003",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-hl7v2-inpatient",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "subject": { "reference": "Patient/pat-hl7v2-david-kim" }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f12a3b4-5c6d-4e7f-9a0b-1c2d3e4f5004",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-hl7v2-dg1-t2dm",
+        "clinicalStatus": {
+          "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/condition-clinical", "code": "active" }]
+        },
+        "code": {
+          "coding": [{ "system": "http://hl7.org/fhir/sid/icd-10-cm", "code": "E11.65", "display": "Type 2 diabetes" }]
+        },
+        "subject": { "reference": "Patient/pat-hl7v2-david-kim" },
+        "encounter": { "reference": "Encounter/enc-hl7v2-inpatient" }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f12a3b4-5c6d-4e7f-9a0b-1c2d3e4f5005",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-hl7v2-glucose",
+        "status": "final",
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "2345-7", "display": "Glucose" }]
+        },
+        "subject": { "reference": "Patient/pat-hl7v2-david-kim" },
+        "encounter": { "reference": "Encounter/enc-hl7v2-inpatient" },
+        "valueQuantity": { "value": 248, "unit": "mg/dL" }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8f12a3b4-5c6d-4e7f-9a0b-1c2d3e4f5006",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-hl7v2-hba1c",
+        "status": "final",
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "4548-4", "display": "Hemoglobin A1c" }]
+        },
+        "subject": { "reference": "Patient/pat-hl7v2-david-kim" },
+        "encounter": { "reference": "Encounter/enc-hl7v2-inpatient" },
+        "valueQuantity": { "value": 9.4, "unit": "%" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "resourceType": "Bundle",
+  "id": "bundle-hl7v3-ccda-ccd",
+  "type": "collection",
+  "total": 5,
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:9a23b4c5-6d7e-8f9a-0b1c-2d3e4f5a6001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-ccda-sarah-jenkins",
+        "name": [{ "family": "Jenkins", "given": ["Sarah"] }],
+        "gender": "female"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9a23b4c5-6d7e-8f9a-0b1c-2d3e4f5a6002",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-ccda-ambulatory-visit",
+        "status": "finished",
+        "class": { "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode", "code": "AMB", "display": "ambulatory" },
+        "subject": { "reference": "Patient/pat-ccda-sarah-jenkins" }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9a23b4c5-6d7e-8f9a-0b1c-2d3e4f5a6003",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-ccda-ckd-stage3",
+        "clinicalStatus": { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/condition-clinical", "code": "active" }] },
+        "code": { "coding": [{ "system": "http://hl7.org/fhir/sid/icd-10-cm", "code": "N18.30", "display": "Chronic kidney disease" }] },
+        "subject": { "reference": "Patient/pat-ccda-sarah-jenkins" },
+        "encounter": { "reference": "Encounter/enc-ccda-ambulatory-visit" }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9a23b4c5-6d7e-8f9a-0b1c-2d3e4f5a6004",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-ccda-creatinine",
+        "status": "final",
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "2160-0", "display": "Creatinine" }] },
+        "subject": { "reference": "Patient/pat-ccda-sarah-jenkins" },
+        "encounter": { "reference": "Encounter/enc-ccda-ambulatory-visit" },
+        "valueQuantity": { "value": 1.72, "unit": "mg/dL" }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9a23b4c5-6d7e-8f9a-0b1c-2d3e4f5a6005",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-ccda-orphan",
+        "status": "final",
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "72166-2", "display": "Tobacco smoking status" }] },
+        "subject": { "reference": "Patient/pat-ccda-sarah-jenkins" },
+        "valueString": "Former smoker"
+      }
+    }
+  ]
+}
